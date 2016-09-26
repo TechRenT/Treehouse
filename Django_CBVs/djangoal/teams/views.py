@@ -12,3 +12,13 @@ def team_list(request):
 def team_detail(request, pk):
     team = get_object_or_404(models.Team, pk=pk)
     return render(request, 'teams/team_detail.html', {'team': team})
+
+
+class TeamListView(ListView):
+    context_object_name = "teams"
+    model = models.Team
+
+
+class TeamDetailView(DetailView):
+    model = models.Team
+    
